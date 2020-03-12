@@ -1,0 +1,16 @@
+theory E2_5
+  imports Main
+begin
+
+fun sum_upto :: "nat ⇒ nat" where
+  "sum_upto 0 = 0" |
+  "sum_upto n = n + (sum_upto (n - 1))"
+
+value "sum_upto 10"
+
+lemma sum_upto_su : "sum_upto n = n * (n + 1) div 2"
+  apply(induction n)
+  apply(auto)
+  done
+
+end
