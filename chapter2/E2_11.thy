@@ -4,26 +4,26 @@ begin
 
 datatype exp = Var | Const int | Add exp exp | Mult exp exp
 
-fun eval :: "exp ⇒ int ⇒ int" where
+fun eval :: "exp \<Rightarrow> int \<Rightarrow> int" where
   "eval Var x = x" |
   "eval (Const e) x = e" |
   "eval (Add lhs rhs) x = (eval lhs x) + (eval rhs x)" |
   "eval (Mult lhs rhs) x = (eval lhs x) * (eval rhs x)"
 
-fun evalp :: "int list ⇒ int ⇒ int" where
+fun evalp :: "int list \<Rightarrow> int \<Rightarrow> int" where
   "evalp [] v = 0" |
   "evalp (x # xs) v = x + v * (evalp xs v)"
 
-fun add_coeffs :: "int list ⇒ int list ⇒ int list" where
+fun add_coeffs :: "int list \<Rightarrow> int list \<Rightarrow> int list" where
   "add_coeffs [] rhs = rhs" |
   "add_coeffs lhs [] = lhs" |
   "add_coeffs (x # xs) (y # ys) = (x + y) # (add_coeffs xs ys)"
 
-fun mul_coeffs :: "int list ⇒ int list ⇒ int list" where
+fun mul_coeffs :: "int list \<Rightarrow> int list \<Rightarrow> int list" where
   "mul_coeffs [] ys = []" |
   "mul_coeffs (x # xs) ys = add_coeffs (map ((*) x) ys) (0 # (mul_coeffs xs ys))"
 
-fun coeffs :: "exp ⇒ int list" where
+fun coeffs :: "exp \<Rightarrow> int list" where
   "coeffs Var = [0, 1]" |
   "coeffs (Const c) = [c]" |
   "coeffs (Add lhs rhs) = add_coeffs (coeffs lhs) (coeffs rhs)" |

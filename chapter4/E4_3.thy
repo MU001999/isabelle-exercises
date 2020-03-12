@@ -2,9 +2,9 @@ theory E4_3
   imports Main
 begin
 
-inductive ev :: "nat ⇒ bool" where
+inductive ev :: "nat \<Rightarrow> bool" where
 ev0 : "ev 0" |
-evSS : "ev n ⟹ ev (Suc (Suc n))"
+evSS : "ev n \<Longrightarrow> ev (Suc (Suc n))"
 
 lemma assumes a: "ev (Suc (Suc n))" shows "ev n"
 proof -

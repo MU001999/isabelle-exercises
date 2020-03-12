@@ -2,11 +2,11 @@ theory E2_9
   imports Main
 begin
 
-fun add :: "nat ⇒ nat ⇒ nat" where
+fun add :: "nat \<Rightarrow> nat \<Rightarrow> nat" where
   "add 0 n = n" |
   "add (Suc m) n = Suc (add m n)"
 
-fun itadd :: "nat ⇒ nat ⇒ nat" where
+fun itadd :: "nat \<Rightarrow> nat \<Rightarrow> nat" where
   "itadd 0 n = n" |
   "itadd (Suc m) n = itadd m (Suc n)"
 

@@ -2,12 +2,12 @@ theory E3_2
   imports Main
 begin
 
-inductive palindromes :: "'a list ⇒ bool" where
+inductive palindromes :: "'a list \<Rightarrow> bool" where
 pp0 : "palindromes []" |
 pp1 : "palindromes [x]" |
-ppn : "palindromes xs ⟹ palindromes (a # xs @ [a])"
+ppn : "palindromes xs \<Longrightarrow> palindromes (a # xs @ [a])"
 
-lemma "palindromes xs ⟹ rev xs = xs"
+lemma "palindromes xs \<Longrightarrow> rev xs = xs"
   apply(induction xs rule : palindromes.induct)
   by auto
 

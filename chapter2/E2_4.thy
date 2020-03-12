@@ -2,11 +2,11 @@ theory E2_4
   imports Main
 begin
 
-fun snoc :: "'a list ⇒ 'a ⇒ 'a list" where
+fun snoc :: "'a list \<Rightarrow> 'a \<Rightarrow> 'a list" where
   "snoc [] x = [x]" |
   "snoc (y # ys) x = y # (snoc ys x)"
 
-fun reverse :: "'a list ⇒ 'a list" where
+fun reverse :: "'a list \<Rightarrow> 'a list" where
   "reverse [] = []" |
   "reverse (x # xs) = snoc (reverse xs) x"
 

@@ -4,11 +4,11 @@ begin
 
 datatype tree0 = Leaf | Node tree0 tree0
 
-fun nodes :: "tree0 ⇒ nat" where
+fun nodes :: "tree0 \<Rightarrow> nat" where
   "nodes Leaf = 1" |
   "nodes (Node l r) = 1 + (nodes l) + (nodes r)"
 
-fun explode :: "nat ⇒ tree0 ⇒ tree0" where
+fun explode :: "nat \<Rightarrow> tree0 \<Rightarrow> tree0" where
   "explode 0 t = t" |
   "explode (Suc n) t = explode n (Node t t)"
 

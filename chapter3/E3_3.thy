@@ -2,20 +2,20 @@ theory E3_3
   imports Main
 begin
 
-inductive star :: "('a ⇒ 'a ⇒ bool) ⇒ 'a ⇒ 'a ⇒ bool" for r where
+inductive star :: "('a \<Rightarrow> 'a \<Rightarrow> bool) \<Rightarrow> 'a \<Rightarrow> 'a \<Rightarrow> bool" for r where
 refl : "star r x x" |
-step : "r x y ⟹ star r y z ⟹ star r x z"
+step : "r x y \<Longrightarrow> star r y z \<Longrightarrow> star r x z"
 
-inductive star' :: "('a ⇒ 'a ⇒ bool) ⇒ 'a ⇒ 'a ⇒ bool" for r where
+inductive star' :: "('a \<Rightarrow> 'a \<Rightarrow> bool) \<Rightarrow> 'a \<Rightarrow> 'a \<Rightarrow> bool" for r where
 refl' : "star' r x x" |
-step' : "star' r x y ⟹ r y z ⟹ star' r x z"
+step' : "star' r x y \<Longrightarrow> r y z \<Longrightarrow> star' r x z"
 
-lemma star1 [simp, intro] : "star r x y ⟹ r y z ⟹ star r x z"
+lemma star1 [simp, intro] : "star r x y \<Longrightarrow> r y z \<Longrightarrow> star r x z"
   apply (induction rule : star.induct)
   apply (meson star.simps)
   by (simp add: star.step)
 
-lemma star'1 [simp, intro] : "star' r y z ⟹ r x y ⟹ star' r x z"
+lemma star'1 [simp, intro] : "star' r y z \<Longrightarrow> r x y \<Longrightarrow> star' r x z"
   apply (induction rule : star'.induct)
   apply (meson refl' step')
   by (simp add: step')

@@ -2,7 +2,7 @@ theory E2_5
   imports Main
 begin
 
-fun sum_upto :: "nat ⇒ nat" where
+fun sum_upto :: "nat \<Rightarrow> nat" where
   "sum_upto 0 = 0" |
   "sum_upto n = n + (sum_upto (n - 1))"
 

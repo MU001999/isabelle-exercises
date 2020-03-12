@@ -2,11 +2,11 @@ theory E4_4
   imports Main
 begin
 
-inductive ev :: "nat ⇒ bool" where
+inductive ev :: "nat \<Rightarrow> bool" where
 ev0 : "ev 0" |
-evSS : "ev n ⟹ ev (Suc (Suc n))"
+evSS : "ev n \<Longrightarrow> ev (Suc (Suc n))"
 
-lemma "¬ ev (Suc (Suc (Suc 0)))"
+lemma "\<not> ev (Suc (Suc (Suc 0)))"
 proof
   assume "ev (Suc (Suc (Suc 0)))"
   thus "False"
