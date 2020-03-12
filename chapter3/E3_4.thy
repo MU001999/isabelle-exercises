@@ -21,9 +21,9 @@ lemma star3 [simp, intro] : "star r x y ⟹ r y z ⟹ star r x z"
 
 inductive iter :: "('a ⇒ 'a ⇒ bool) ⇒ nat ⇒ 'a ⇒ 'a ⇒ bool" for r where
 iter0 : "iter r n x x" |
-iter2 : "r x y ⟹ iter r 1 x y ⟹ iter r n y z ⟹ iter r (n + 1) x z" |
-iter3 : "iter r n x y ⟹ r y z ⟹ iter r (n + 1) x z" |
-iter4 : "iter r n x y ⟹ iter r m y z ⟹ iter r (m + n) x z"
+iter1 : "r x y ⟹ iter r 1 x y ⟹ iter r n y z ⟹ iter r (n + 1) x z" |
+iter2 : "iter r n x y ⟹ r y z ⟹ iter r (n + 1) x z" |
+iter3 : "iter r n x y ⟹ iter r m y z ⟹ iter r (m + n) x z"
 
 lemma "star r x y ⟹ ∃ n. iter r n x y"
   apply (induction rule : star.induct)
